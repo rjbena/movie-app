@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Movie = ({ movie }) => {
   const maxTextLength = 150;
   const shortenText = (text) => {
@@ -15,7 +17,9 @@ const Movie = ({ movie }) => {
         </a>
         <div className="card-body">
           <h4 className="card-title">
-            <a href="#">{movie.name}</a>
+            <Link href={`/movies/${movie.id}`}>
+              <a>{movie.name}</a>
+            </Link>
           </h4>
           <h5>{movie.releaseYear}</h5>
           <p className="card-text">{shortenText(movie.description)}</p>

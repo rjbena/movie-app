@@ -35,5 +35,10 @@ const MOVIE_DATA = [
 ];
 
 export const getMovies = () => {
-  return MOVIE_DATA;
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(MOVIE_DATA);
+      reject("cannot fetch data");
+    }, 50);
+  });
 };
