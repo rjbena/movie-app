@@ -5,6 +5,8 @@ const MOVIE_DATA = [
     releaseYear: 1994,
     description:
       "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    longDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error expedita quae voluptatum nesciunt est at sed, officiis ipsa ex nobis architecto temporibus, voluptate rerum inventore consequatur quis cupiditate commodi velit?",
     rating: 4.8,
     genre: "drama",
     image:
@@ -16,6 +18,8 @@ const MOVIE_DATA = [
     releaseYear: 2008,
     description:
       "When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    longDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error expedita quae voluptatum nesciunt est at sed, officiis ipsa ex nobis architecto temporibus, voluptate rerum inventore consequatur quis cupiditate commodi velit?",
     rating: 4.7,
     genre: "action, crime, drama",
     image:
@@ -27,6 +31,8 @@ const MOVIE_DATA = [
     releaseYear: 2004,
     description:
       "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+    longDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error expedita quae voluptatum nesciunt est at sed, officiis ipsa ex nobis architecto temporibus, voluptate rerum inventore consequatur quis cupiditate commodi velit?",
     rating: 4.9,
     genre: "adventure, drama, fantasy",
     image:

@@ -6,7 +6,7 @@ import MovieList from "../components/MovieList";
 
 import { getMovies } from "../actions";
 
-const Home = ({ movies }) => {
+const Home = ({ movies, images }) => {
   //const [movies, setMovies] = useState([]);
   const [message, setMessage] = useState("");
   // useEffect(() => {
@@ -30,7 +30,7 @@ const Home = ({ movies }) => {
               <SideMenu />
             </div>
             <div className="col-lg-9">
-              <Carousel />
+              <Carousel images={images} />
             </div>
             {message ? (
               <div className="alert alert-danger" role="alert">
@@ -55,8 +55,13 @@ const Home = ({ movies }) => {
 
 export const getStaticProps = async () => {
   const movies = await getMovies();
+  const images = movies.map((movie) => ({
+    id: `image-${movie.id}`,
+    url: movie.image,
+    alt: movie.name,
+  }));
   return {
-    props: { movies },
+    props: { movies, images },
   };
 };
 
