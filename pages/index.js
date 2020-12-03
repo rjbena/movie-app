@@ -46,10 +46,17 @@ const Home = ({ movies }) => {
   );
 };
 
-Home.getInitialProps = async () => {
+// Home.getInitialProps = async () => {
+//   const movies = await getMovies();
+//   return {
+//     movies,
+//   };
+// };
+
+export const getStaticProps = async () => {
   const movies = await getMovies();
   return {
-    movies,
+    props: { movies },
   };
 };
 
