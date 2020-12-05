@@ -1,3 +1,7 @@
+import axios from "axios";
+
+const BASE_URL = "http://localhost:3000";
+
 const MOVIE_DATA = [
   {
     id: "1",
@@ -47,13 +51,15 @@ const CATEGORY_DATA = [
   { id: "4", name: "historical" },
 ];
 
-export const getMovies = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(MOVIE_DATA);
-      reject("cannot fetch data");
-    }, 50);
-  });
+export const getMovies = async () => {
+  // return new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve(MOVIE_DATA);
+  //     reject("cannot fetch data");
+  //   }, 50);
+  // });
+  const { data } = await axios.get(`${BASE_URL}/api/v1/movies`);
+  return data;
 };
 
 export const getMovieById = (id) => {
