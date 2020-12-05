@@ -4,9 +4,9 @@ import SideMenu from "../components/Sidemenu";
 import Carousel from "../components/Carousel";
 import MovieList from "../components/MovieList";
 
-import { getMovies } from "../actions";
+import { getMovies, getCategories } from "../actions";
 
-const Home = ({ movies, images }) => {
+const Home = ({ movies, images, categories }) => {
   //const [movies, setMovies] = useState([]);
   const [message, setMessage] = useState("");
   // useEffect(() => {
@@ -27,7 +27,7 @@ const Home = ({ movies, images }) => {
         <div className="container">
           <div className="row">
             <div className="col-lg-3">
-              <SideMenu />
+              <SideMenu categories={categories} />
             </div>
             <div className="col-lg-9">
               <Carousel images={images} />
@@ -55,13 +55,14 @@ const Home = ({ movies, images }) => {
 
 export const getStaticProps = async () => {
   const movies = await getMovies();
+  const categories = await getCategories();
   const images = movies.map((movie) => ({
     id: `image-${movie.id}`,
     url: movie.image,
     alt: movie.name,
   }));
   return {
-    props: { movies, images },
+    props: { movies, images, categories },
   };
 };
 
