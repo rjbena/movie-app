@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 import Modal from "./Model";
@@ -7,12 +8,13 @@ import MovieCreateForm from "./MovieCreateForm";
 import { createMovie } from "../actions/";
 
 const SideMenu = ({ categories }) => {
+  const router = useRouter();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleCreateMovie = async (movie) => {
     const movies = await createMovie(movie);
-    console.log(movies);
     setIsSubmitted(true);
+    router.push("/");
   };
 
   return (

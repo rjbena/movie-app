@@ -52,24 +52,13 @@ const CATEGORY_DATA = [
 ];
 
 export const getMovies = async () => {
-  // return new Promise((resolve, reject) => {
-  //   setTimeout(() => {
-  //     resolve(MOVIE_DATA);
-  //     reject("cannot fetch data");
-  //   }, 50);
-  // });
   const { data } = await axios.get(`${BASE_URL}/api/v1/movies`);
   return data;
 };
 
-export const getMovieById = (id) => {
-  return new Promise((resolve, reject) => {
-    const movie = MOVIE_DATA.find((m) => m.id === id);
-
-    setTimeout(() => {
-      resolve(movie);
-    }, 50);
-  });
+export const getMovieById = async (id) => {
+  const { data } = await axios.get(`${BASE_URL}/api/v1/movies/${id}`);
+  return data;
 };
 
 export const getCategories = () => {
@@ -81,11 +70,14 @@ export const getCategories = () => {
 };
 
 export const createMovie = (movie) => {
-  return new Promise((resolve, reject) => {
-    movie.id = Math.random().toString(36).substr(2, 7);
-    MOVIE_DATA.push(movie);
-    setTimeout(() => {
-      resolve(MOVIE_DATA);
-    }, 50);
-  });
+  movie.id = Math.random().toString(36).substr(2, 7);
+  return axios.post(`${BASE_URL}/api/v1/movies`, movie).then((res) => res.data);
+
+  // return new Promise((resolve, reject) => {
+  //   movie.id = Math.random().toString(36).substr(2, 7);
+  //   MOVIE_DATA.push(movie);
+  //   setTimeout(() => {
+  //     resolve(MOVIE_DATA);
+  //   }, 50);
+  // });
 };

@@ -7,7 +7,7 @@ const Movie = ({ movie }) => {
         <h1 className="display-4">{movie.name}</h1>
         <p className="lead">{movie.description}</p>
         <hr className="my-4" />
-        <p>{movie.genre}</p>
+        <p>{movie.genres.map((g) => g + " ")}</p>
       </div>
       <p className="desc-text" style={{ fontSize: "21px" }}>
         {movie.longDesc}
