@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-
+import Link from "next/link";
 import { getMovieById, getMovies, deleteMovie } from "../../../actions";
 
 const Movie = ({ movie }) => {
@@ -18,6 +18,14 @@ const Movie = ({ movie }) => {
         <p className="lead">{movie.description}</p>
         <hr className="my-4" />
         <p>{movie.genres.map((g) => g + " ")}</p>
+        <Link href={`/movies/${movie.id}/edit`}>
+          <button
+            style={{ marginRight: "70px" }}
+            className="btn btn-warning btn-lg"
+          >
+            Edit
+          </button>
+        </Link>
         <button
           onClick={() => handleDeleteMovie(movie.id)}
           className="btn btn-danger btn-lg"
