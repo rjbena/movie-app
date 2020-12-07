@@ -81,3 +81,9 @@ export const createMovie = (movie) => {
   //   }, 50);
   // });
 };
+
+export const deleteMovie = async (id) => {
+  const { data } = await axios.delete(`${BASE_URL}/api/v1/movies/${id}`);
+
+  return data;
+};

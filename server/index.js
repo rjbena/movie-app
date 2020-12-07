@@ -39,7 +39,19 @@ app.prepare().then(() => {
     res.json(movie);
   });
   server.delete("/api/v1/movies/:id", (req, res) => {
-    res.json({ message: `Deleting post of id ${req.params.id}` });
+    const { id } = req.params;
+    console.log(id);
+    const updatedMovieData = movieData.filter((movie) => movie.id !== id);
+
+    const pathToFile = path.join(__dirname, filePath);
+    const stringifiedData = JSON.stringify(updatedMovieData, null, 2);
+
+    fs.writeFile(pathToFile, stringifiedData, (err) => {
+      if (err) {
+        return res.status(422).send(err);
+      }
+      return res.json("Movie successfully deleted.");
+    });
   });
 
   server.get("*", (req, res) => {
