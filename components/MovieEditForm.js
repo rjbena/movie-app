@@ -28,7 +28,7 @@ const MovieEditForm = ({ categories, movie }) => {
   const submitForm = (e) => {
     e.preventDefault();
     editMovie(form).then((updatedMovie) => {
-      router.push(`/movies/${movie.id}`);
+      router.push("/movies/[id]", `/movies/${movie.id}`);
     });
   };
 

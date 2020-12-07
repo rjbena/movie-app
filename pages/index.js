@@ -9,17 +9,21 @@ import { getMovies, getCategories } from "../actions";
 const Home = ({ movies, images, categories }) => {
   //const [movies, setMovies] = useState([]);
   const [message, setMessage] = useState("");
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const resMovies = await getMovies();
-  //       setMovies(resMovies);
-  //     } catch (error) {
-  //       setMessage(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  const [filter, setFilter] = useState("all");
+
+  const changeCategory = (category) => {
+    setFilter(category.name);
+  };
+
+  const filterMovies = (movies) => {
+    if (filter !== "all") {
+      return movies.filter((movie) => {
+        return movie.genres && movie.genres.includes(filter);
+      });
+    } else {
+      return movies;
+    }
+  };
 
   return (
     <div>
@@ -27,17 +31,22 @@ const Home = ({ movies, images, categories }) => {
         <div className="container">
           <div className="row">
             <div className="col-lg-3">
-              <SideMenu categories={categories} />
+              <SideMenu
+                categories={categories}
+                changeCategory={changeCategory}
+                activeCategory={filter}
+              />
             </div>
             <div className="col-lg-9">
               <Carousel images={images} />
+              <h1>Displaying {filter} movies</h1>
             </div>
             {message ? (
               <div className="alert alert-danger" role="alert">
                 {message}
               </div>
             ) : (
-              <MovieList movies={movies} />
+              <MovieList movies={filterMovies(movies) || []} />
             )}
           </div>
         </div>

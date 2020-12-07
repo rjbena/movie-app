@@ -7,7 +7,7 @@ import MovieCreateForm from "./MovieCreateForm";
 
 import { createMovie } from "../actions/";
 
-const SideMenu = ({ categories }) => {
+const SideMenu = ({ categories, changeCategory, activeCategory }) => {
   const router = useRouter();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -28,9 +28,16 @@ const SideMenu = ({ categories }) => {
       <h1 className="my-4">Shop Name</h1>
       <div className="list-group">
         {categories.map((category) => (
-          <Link key={category.id} href={`/categories/${category.name}`}>
-            <a className="list-group-item">{category.name}</a>
-          </Link>
+          <a
+            onClick={() => changeCategory(category)}
+            key={category.id}
+            href="#"
+            className={`list-group-item ${
+              activeCategory === category.name ? "active" : ""
+            }`}
+          >
+            {category.name}
+          </a>
         ))}
       </div>
     </div>
