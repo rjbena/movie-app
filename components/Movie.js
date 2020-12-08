@@ -21,6 +21,7 @@ const Movie = ({ movie }) => {
               <a>{movie.name}</a>
             </Link>
           </h4>
+          <div className="movie-genre">{movie.genres.map((g) => g + " ")}</div>
           <h5>{movie.releaseYear}</h5>
           <p className="card-text">{shortenText(movie.description)}</p>
         </div>

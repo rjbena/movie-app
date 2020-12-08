@@ -71,3 +71,7 @@ export const editMovie = async (movie) => {
     console.log(error);
   }
 };
+
+export const getPosts = () => {
+  return axios.get(`${BASE_URL}/api/v1/posts`).then((res) => res.data);
+};
